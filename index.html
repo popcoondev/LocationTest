@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            var type = connection.effectiveType;
+
+            function updateConnectionStatus() {
+                var time = new Date();
+                console.log(time + "接続タイプが" + type + "から" + connection.effectiveType + "に変化");
+                var div = document.createElement("div");
+                div.innerHTML = time + " 接続タイプが" + type + "から" + connection.effectiveType + "に変化";
+                document.body.appendChild(div);
+                type = connection.effectiveType;
+
+            }
+
+            connection.addEventListener('change', updateConnectionStatus);
+        </script>
+    </body>
+</html>
